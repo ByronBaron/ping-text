@@ -1,0 +1,8 @@
+<p>Import the site you want to ping below</p>
+
+<form action="/main/ping_page/ping_input/" method="post">
+    {% csrf_token %} 
+    <label for="ping_input">site: </label>
+    <input id="ping_input" type="text" name="ping_input" value="{{ var }}">
+    <input type="submit" value="start">
+</form>
