@@ -34,7 +34,6 @@ def ping_index(request):
     return render_to_response('siteapp/ping_input.html', p)
 
 #text views
-
+@login_required(login_url='/login/')
 def text(request):
     return render_to_response('siteapp/text_display.html')
-

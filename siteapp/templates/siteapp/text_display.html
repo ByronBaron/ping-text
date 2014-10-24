@@ -1,1 +1,9 @@
-test
+{% if texts %}
+    <ul>
+    {% for text in texts %}
+        <li>{{ text.textline }}</li>
+    {% endfor %}
+    </ul>
+{% else %}
+    <h1>No text yet</h1>
+{% endif %}
