@@ -31,8 +31,10 @@ def ping(request):
 
 @login_required(login_url='/login/')
 def ping_index(request):
-    var = input("Enter a site: ")
-    p = Popen(["ping", "-c", "7", var])
+    if request.POST:
+        var = '' 
+        var = request.POST['var']
+        p = Popen(["ping", "-c", "7", var])
     return render_to_response('siteapp/ping_input.html', p)
 
 #text views
