@@ -4,6 +4,8 @@ from django.template import RequestContext
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate, login, logout
 from subprocess import Popen
+from django.views import generic
+from siteapp.models import Text
 # Create your views here.
 def login_user(request):
     logout(request)
@@ -34,6 +36,7 @@ def ping_index(request):
     return render_to_response('siteapp/ping_input.html', p)
 
 #text views
-@login_required(login_url='/login/')
-def text(request):
-    return render_to_response('siteapp/text_display.html')
+
+class TextView(generic.ListView): 
+    model = Text
+    template_name  = "siteapp/text_display.html"
