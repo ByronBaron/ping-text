@@ -27,14 +27,12 @@ def home_page(request):
 
 @login_required(login_url='/login/')
 def ping(request):
-    return render_to_response('siteapp/ping_page.html')
+    return render_to_response('siteapp/ping_page.html', context_instance=RequestContext(request))
 
 @login_required(login_url='/login/')
 def ping_index(request):
-    if request.POST:
-        var = '' 
-        var = request.POST['var']
-        p = Popen(["ping", "-c", "7", var])
+    var = raw_input('Enter you site here: ')
+    p = Popen(["ping", "-c", "7", var])
     return render_to_response('siteapp/ping_input.html', p)
 
 #text views
